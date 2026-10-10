@@ -6,15 +6,26 @@ The workflow uses **1024 × 1024** image patches and five annotation categories.
 
 **Repository:** https://github.com/cwwang1979/Mitotic_CwLab
 
-> **Script naming:** In this README, commands use canonical repository filenames without upload-version suffixes. If your downloaded files are named `train(2).py`, `patch_train(6).py`, `patch_inf(2).py`, `patch_json2txt(3).py`, `data_split(3).py`, `val(2).py`, `txt2json(2).py`, `patchjson2wholesjson(1).py`, or `Cloud_Detec_evaluation(7).py`, rename/copy the **latest** version to its corresponding unsuffixed filename before running the commands. Use `data_path(2).yaml` as `data_path.yaml`.
 
 ## Associated Publications
 
 If you use this work or any part of this repository in your research, please cite:
 
-- **Wang et al. (2026).** *Improved Deep Learning for Mitotic Figure Examination on Whole Slide Images*. **Under Revision**, *Biomedical Signal Processing and Control*.
+- (**Under Revision**) **Wang et al. (2026).** *Improved Deep Learning for Mitotic Figure Examination on Whole Slide Images*. , *Biomedical Signal Processing and Control*.
 
 A complete bibliographic citation will be added when the paper becomes available.
+
+### Download
+
+Clone the repository:
+
+```bash
+git clone https://github.com/cwwang1979/Mitotic_CwLab.git
+cd Mitotic_CwLab
+```
+
+Data, execution files, configuration files, and pretrained models can be downloaded from the [zip](https://drive.google.com/file/d/1K_UESR6lhJi4tFSrzTYq6w8prpMZqRPB/view?usp=drive_link) file.
+
 
 ## Demonstration Video
 
@@ -58,18 +69,6 @@ The following hardware and software specifications follow the reference environm
 
 WSI extraction also requires **OpenSlide**. The evaluation scripts use NumPy, pandas, scikit-learn, and other scientific Python packages.
 
-### Download
-
-Clone the repository:
-
-```bash
-git clone https://github.com/cwwang1979/Mitotic_CwLab.git
-cd Mitotic_CwLab
-```
-
-Data, execution files, configuration files, and pretrained models can be downloaded from the [zip](PASTE_ZIP_DOWNLOAD_LINK_HERE) file.
-
-> **Download link placeholder:** Replace `PASTE_ZIP_DOWNLOAD_LINK_HERE` with the actual ZIP/Google Drive URL when the files are released. The scripts below do not automatically download WSI datasets or model weights.
 
 ### 1. Installation
 
@@ -311,7 +310,6 @@ trained_model/
         └── last.pt
 ```
 
-> **Model variant note:** The supplied `train.py` trains the **standard YOLO11x configuration**. Other supplied inference/evaluation scripts default to a run whose name ends with **`_GAM`**. To reproduce that modified model, its corresponding architecture definition and trained checkpoint must be provided, and the configured run names/paths must be made consistent. The standard `train.py` does **not** create the GAM checkpoint by itself.
 
 ## Inference
 
@@ -472,14 +470,6 @@ Do **not** substitute the `Class` metrics, other cell types, the `Merge` entry, 
 
 > The evaluator also produces additional categories (including T5/T6 and `Merge`) because `ClassNum = 7`; these are not part of the reported T2 detection result.
 
-## Important Reproducibility Notes
-
-- The latest `train.py` runs standard pretrained YOLO11x, whereas the supplied prediction/post-processing scripts initially reference a `_GAM` run. Align the selected model, checkpoint, and output names across scripts.
-- Several scripts specify input/output directories as Python variables instead of accepting command-line flags. Review those paths before each stage.
-- The `data_split.py` output layout differs from the original absolute `data_path.yaml`; update the YAML before training.
-- The `annotations_summary_expanded.csv` includes a summary row, which is not an image and should not be considered a candidate patch.
-- Inference is performed on all test patches. Training and validation patches are drawn from the training WSIs and should not be mixed with the independent test WSIs.
-- The supplied evaluator's matching implementation and class-aggregation logic should be validated independently if results will be used for a new benchmark or publication.
 
 ## License
 
