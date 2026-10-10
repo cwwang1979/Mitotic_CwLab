@@ -12,9 +12,31 @@ The workflow uses **1024 × 1024** image patches and five annotation categories.
 
 If you use this work or any part of this repository in your research, please cite:
 
-- **Wang et al. (2026).** *Improved Deep Learning for Mitotic Figure Examination on Whole Slide Images*. Manuscript under submission.
+- **Wang et al. (2026).** *Improved Deep Learning for Mitotic Figure Examination on Whole Slide Images*. **Under Revision**, *Biomedical Signal Processing and Control*.
 
 A complete bibliographic citation will be added when the paper becomes available.
+
+## Demonstration Video
+
+**Cwlab AiExplore — Interactive Mitotic Figure Detection on Whole Slide Images**
+
+[Watch the demonstration video on YouTube](https://www.youtube.com/watch?v=8oiq_sFF2uw)
+
+This video demonstrates **Cwlab AiExplore**, an in-house platform integrating digital pathology image viewing with deep learning inference for real-time mitotic figure detection in whole-slide images (WSIs). Users can select a region of interest (ROI), initiate AI inference, and inspect detection overlays directly on the original pathology image. The demonstration covers the workflow from ROI selection to inference and result visualization, including analysis across multiple selected regions.
+
+**Features demonstrated:**
+
+- Interactive whole-slide image viewing.
+- User-defined region-of-interest (ROI) selection.
+- Real-time AI inference for mitotic figure detection.
+- Detection overlays for visual inspection.
+- Inference across multiple selected ROIs.
+
+By bringing image viewing and AI inference into a unified interface, Cwlab AiExplore supports interactive exploration of model predictions for digital pathology research.
+
+**Developed by Cwlab.**
+
+**Related manuscript:** *Improved Deep Learning for Mitotic Figure Examination on Whole Slide Images* (under revision, *Biomedical Signal Processing and Control*).
 
 ## Setup
 
@@ -45,7 +67,9 @@ git clone https://github.com/cwwang1979/Mitotic_CwLab.git
 cd Mitotic_CwLab
 ```
 
-Prepare the WSI files (`.svs`) and their corresponding annotation files (`ntuhong2.json`) separately. The original data and pretrained model weights are **not automatically downloaded** by the scripts shown below. Add the project-specific data/weights download link here when those assets are released.
+Data, execution files, configuration files, and pretrained models can be downloaded from the [zip](PASTE_ZIP_DOWNLOAD_LINK_HERE) file.
+
+> **Download link placeholder:** Replace `PASTE_ZIP_DOWNLOAD_LINK_HERE` with the actual ZIP/Google Drive URL when the files are released. The scripts below do not automatically download WSI datasets or model weights.
 
 ### 1. Installation
 
@@ -431,17 +455,22 @@ Copy or link the **original WSI-level** `ntuhong2.json` file into the matching o
 python Cloud_Detec_evaluation.py
 ```
 
-The supplied evaluation code uses **IoU ≥ 0.5** as its geometric matching criterion, and exports detection and classification summaries including:
+The supplied evaluation code uses **IoU ≥ 0.5** as its geometric matching criterion. It calculates detection and classification metrics for multiple cell types and generates per-slide and aggregate results in **JSON**, **CSV**, and **NumPy (`.npy`)** formats.
 
-- Accuracy
-- Precision
-- Recall
-- F1-score (`FMeasure`)
-- Per-slide results, averages, totals, and confusion-related outputs
+**Reported evaluation results for the Proposed Method:** Only the **T2 (Mitotic figure)** row under **Detect** in the **`Total_result`** section of the output CSV is used. The corresponding metrics are **Accuracy, Recall, Precision, and F1-score (`FMeasure`)**. These values are aggregated across the test WSIs using the evaluator's total TP/FP/TN/FN counts, rather than taken from the `Average_result` section.
 
-The script writes summary results in **JSON**, **CSV**, and **NumPy (`.npy`)** formats. Its `ClassNum = 7` also creates T5/T6 and `Merge` output positions although the YOLO label mapping contains only five active categories; review those fields before interpreting them as separate trained classes.
+```text
+Total_result
+                 Detect
+ClassNumber   Accuracy   Recall   Precision   FMeasure
+T2            ...        ...      ...         ...
+```
 
-**Evaluation protocol:** This JSON/IoU-based whole-slide evaluator is distinct from the later T2-only evaluation protocol using a **7.5 μm matching radius and strict one-to-one assignment** for comparisons against other methods. Do not interchange the resulting metrics without stating the evaluation protocol.
+For the JSON output, the same metrics are stored under the `T2` item within the top-level `Total` array, in its `Detect` object.
+
+Do **not** substitute the `Class` metrics, other cell types, the `Merge` entry, or the all-class `Total` entry for the reported Proposed Method results. **No micrometer-distance matching criterion is used for the Proposed Method evaluation.**
+
+> The evaluator also produces additional categories (including T5/T6 and `Merge`) because `ClassNum = 7`; these are not part of the reported T2 detection result.
 
 ## Important Reproducibility Notes
 
