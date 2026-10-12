@@ -1,6 +1,6 @@
 # Mitotic_CwLab
 
-**Mitotic_CwLab** is a deep-learning pipeline for detecting and examining mitotic figures in histopathological whole-slide images (WSIs). The repository covers WSI preprocessing, patch-level annotation conversion, YOLO-based training, inference, reconstruction of whole-slide predictions, and quantitative evaluation.
+**Mitotic_CwLab** is a deep-learning method for detecting and examining mitotic figures in histopathological whole-slide images (WSIs). The repository covers WSI preprocessing, patch-level annotation conversion, YOLO-based training, inference, reconstruction of whole-slide predictions, and quantitative evaluation.
 
 The workflow uses **1024 × 1024** image patches and five annotation categories. Its principal target for mitotic figure detection is **T2 (Mitotic figure)**.
 
