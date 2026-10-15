@@ -480,5 +480,5 @@ License summary: https://creativecommons.org/licenses/by-nc/4.0/
 ## Contact
 
 **Prof. Ching-Wei Wang**  
-cweiwang@mail.ntust.edu.tw; cwwang1979@gmail.com  
-National Taiwan University of Science and Technology
+cwwang1979@gmail.com  
+
