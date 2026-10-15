@@ -24,7 +24,7 @@ git clone https://github.com/cwwang1979/Mitotic_CwLab.git
 cd Mitotic_CwLab
 ```
 
-Data, execution files, configuration files, and pretrained models can be downloaded from the [zip](https://drive.google.com/file/d/1K_UESR6lhJi4tFSrzTYq6w8prpMZqRPB/view?usp=drive_link) file. For reviewers, please use the password on the associated manuscript to unzip the file.
+Data, execution files, configuration files, and pretrained models can be downloaded from the [zip]([https://drive.google.com/file/d/1K_UESR6lhJi4tFSrzTYq6w8prpMZqRPB/view?usp=drive_link](https://drive.google.com/file/d/1EJcPnS5XA8KUVSNaKJFBsrOjmlsf4Xml/view?usp=drive_link)) file. For reviewers, please use the password on the associated manuscript to unzip the file.
 
 
 ## Demonstration Video
