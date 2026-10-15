@@ -11,7 +11,7 @@ The workflow uses **1024 × 1024** image patches and five annotation categories.
 
 If you use this work or any part of this repository in your research, please cite:
 
-- (**Under Revision**) **Wang et al. (2026).** *Improved Deep Learning for Mitotic Figure Examination on Whole Slide Images*. , *Biomedical Signal Processing and Control*.
+- (**Under review**) **Wang et al. (2026).** *Improved Deep Learning for Mitotic Figure Examination on Whole Slide Images*. , *Biomedical Signal Processing and Control*.
 
 A complete bibliographic citation will be added when the paper becomes available.
 
@@ -24,7 +24,7 @@ git clone https://github.com/cwwang1979/Mitotic_CwLab.git
 cd Mitotic_CwLab
 ```
 
-Data, execution files, configuration files, and pretrained models can be downloaded from the [zip](https://drive.google.com/file/d/1K_UESR6lhJi4tFSrzTYq6w8prpMZqRPB/view?usp=drive_link) file.
+Data, execution files, configuration files, and pretrained models can be downloaded from the [zip](https://drive.google.com/file/d/1K_UESR6lhJi4tFSrzTYq6w8prpMZqRPB/view?usp=drive_link) file. For reviewers, please use the password on the associated manuscript to unzip the file.
 
 
 ## Demonstration Video
